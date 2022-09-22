@@ -1,0 +1,50 @@
+Outline
+
+#General Great Lakes tip - to find software, run "module spider <pkg_name>" and see if Great Lakes has a copy already installed
+
+
+#I have also provided some modules in the Baucom lab long-term storage: /nfs/turbo/rsbaucom/lab/Lmod
+#To use them, first type: 
+#		module use /nfs/turbo/rsbaucom/lab/Lmod 
+#then 
+#		module load [module_name]
+
+#Finally, you can always install your own copy of software and add it to your path
+
+#0. Identify your goals. Do you want to ...
+    call SNPs?
+    perform tests of selection? (e.g. dn/ds)
+	describe population structure? 
+	model the history of selection and gene flow?
+	associate traits with genetic regions? (e.g. GWAS, QTL mapping)
+
+#1. Download / obtain sequence
+    Where will you store your sequence? Is this short-term or long-term storage?
+    Note that most sequencing facilities will give you a portal or wget script to download new reads. 
+	Detailed instructions: 
+		Downloading_and_obtaining_sequence.txt (see the Baucom Transcriptome repository)
+    Sample script:
+		Download_from_SRA_array.sh will download a list of files from the SRA. (see the Baucom Transcriptome repository)
+
+#2. Demultiplex reads
+
+
+#3. QC reads (after 1)
+	Use FastQC to get a file-by-file picture of what's up with your reads
+	Use MultiQC to summarize FastQC results for many files
+	Consider the specific QC expectations for your sequencing type. What are your expectations about levels of sequence duplication, read length, and quality depending on whether you are using short- or long-read sequencing of a whole-genome library, a transcriptome library, a reduced representation library, etc.?
+	Detailed instructions: 
+		QC.txt (see the Baucom Transcriptome repository)
+    Sample script: 
+		FastQC_array.sh (see the Baucom Transcriptome repository)
+		
+#4. Trim reads (after 1 and 2)
+    Deciding whether to trim: trimming off adapters is an extra computational step that adds time. It's probably better for some downstream analyses, but reads clipped by trimming software can often be rescued and some downstream software (e.g. Subreads, GATK, STAR) handles untrimmed reads fine, particularly with RNASeq. Trimming reduces available information, as well as increasing computational demands. Trim if you want to prioritize quality for some applications (e.g. assembly), or skip trimming if you're in a hurry, really want to squeeze every drop out of the sequence data, or are using a pipeline that doesn't require it. Best practices and research findings on this seem to change frequently, so it's a good place to weigh the options and make a judgment call. 
+	There are many options; here are example scripts for two of them
+    Trimmomatic - powerful, tuneable trimming software for adapter removal and quality trimming
+	Trim galore - easy to use wrapper for FastQC and Cutadapt, which automatically removes Illumina adapters
+	Detailed instructions: 
+		Trimming.txt
+    Sample script: 
+		Trim_Galore_array.sh
+		Trimmomatic_array.sh
