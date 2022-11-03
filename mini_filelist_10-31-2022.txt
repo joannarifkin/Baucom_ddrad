@@ -1,0 +1,4 @@
+/nfs/turbo/rsbaucom/lab/Hesperis_ddRAD_September_2022/bam/trimmed-barcode01.bam
+/nfs/turbo/rsbaucom/lab/Hesperis_ddRAD_September_2022/bam/trimmed-barcode02.bam
+/nfs/turbo/rsbaucom/lab/Hesperis_ddRAD_September_2022/bam/trimmed-barcode03.bam
+/nfs/turbo/rsbaucom/lab/Hesperis_ddRAD_September_2022/bam/trimmed-barcode04.bam

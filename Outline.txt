@@ -27,7 +27,7 @@ Outline
 		Download_from_SRA_array.sh will download a list of files from the SRA. (see the Baucom Transcriptome repository)
 
 #2. Demultiplex reads
-
+	Demultiplex with cutadapt
 
 #3. QC reads (after 1)
 	Use FastQC to get a file-by-file picture of what's up with your reads
